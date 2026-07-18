@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'" />
+    <title>Dude Companion</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="stage" aria-label="Dude Companion desktop overlay">
+      <div id="speech" class="speech" role="status" aria-live="polite" hidden>
+        <span id="speechText"></span>
+        <button id="speechClose" aria-label="Dismiss">×</button>
+      </div>
+
+      <section id="companion" class="companion" tabindex="0" aria-label="Desktop companion. Right click to chat, double click to personalize.">
+        <div class="tether" aria-hidden="true"></div>
+        <div class="shadow" aria-hidden="true"></div>
+        <div id="rig" class="rig male outfit-night">
+          <div class="part part-leg-left"><img class="skin" src="assets/male.png" alt="" draggable="false" /></div>
+          <div class="part part-leg-right"><img class="skin" src="assets/male.png" alt="" draggable="false" /></div>
+          <div class="part part-torso"><img class="skin" src="assets/male.png" alt="" draggable="false" /></div>
+          <div class="part part-arm-left"><img class="skin" src="assets/male.png" alt="" draggable="false" /></div>
+          <div class="part part-arm-right"><img class="skin" src="assets/male.png" alt="" draggable="false" /></div>
+          <div class="part part-head"><img class="skin" src="assets/male.png" alt="" draggable="false" /></div>
+          <img class="base-skin" src="assets/male-base.png" alt="" draggable="false" />
+          <img class="partner-skin" src="assets/female.png" alt="" draggable="false" />
+          <img class="partner-base-skin" src="assets/female-base.png" alt="" draggable="false" />
+          <div class="breath-glow" aria-hidden="true"></div>
+          <div id="prop" class="prop" aria-hidden="true"></div>
+          <div id="censor" class="censor" aria-hidden="true"><span>MODESTY<br>PATCH</span></div>
+        </div>
+        <div id="statusPill" class="status-pill">just vibing</div>
+      </section>
+
+      <aside id="quickPanel" class="panel quick-panel" hidden aria-label="Companion menu">
+        <header>
+          <div><span class="signal"></span><strong id="companionName">Dude</strong></div>
+          <button class="icon-button panel-close" aria-label="Close menu">×</button>
+        </header>
+        <div class="chat-row">
+          <input id="chatInput" autocomplete="off" placeholder="Ask, search, open, remind…" aria-label="Chat with companion" />
+          <button id="sendChat" class="send-button" aria-label="Send">↵</button>
+        </div>
+        <p class="hint">Try “search tiny desk plants”, “open Safari”, “remind me in 20m to stretch”, or “hang”.</p>
+        <div class="quick-actions">
+          <button data-move="jump">Jump</button>
+          <button data-move="sit">Sit</button>
+          <button data-move="hang">Hang</button>
+          <button id="wardrobeQuick">Outfit</button>
+        </div>
+        <div class="system-strip" aria-label="System status">
+          <span><b id="cpuValue">—</b> CPU</span>
+          <span><b id="memoryValue">—</b> memory</span>
+          <span><b id="screenValue">0m</b> active</span>
+        </div>
+        <button id="quietToggle" class="quiet-toggle" aria-pressed="false">Quiet mode <span>Off</span></button>
+      </aside>
+
+      <aside id="settingsPanel" class="panel settings-panel" hidden aria-label="Personalize companion">
+        <header>
+          <div><span class="signal"></span><strong>Personalize</strong></div>
+          <button class="icon-button panel-close" aria-label="Close settings">×</button>
+        </header>
+
+        <div class="setting-section">
+          <span class="setting-label">Companion</span>
+          <div class="segmented" role="radiogroup" aria-label="Character">
+            <button data-character="male" role="radio" aria-checked="true"><img src="assets/male.png" alt="" />Dude</button>
+            <button data-character="female" role="radio" aria-checked="false"><img src="assets/female.png" alt="" />Dudette</button>
+            <button data-character="both" role="radio" aria-checked="false"><span class="duo-preview"><img src="assets/male.png" alt="" /><img src="assets/female.png" alt="" /></span>Both</button>
+          </div>
+        </div>
+
+        <div class="setting-section">
+          <span class="setting-label">Wardrobe</span>
+          <div class="outfits" role="radiogroup" aria-label="Outfit">
+            <button data-outfit="night" role="radio" aria-checked="true"><i class="swatch night"></i>Night Ops</button>
+            <button data-outfit="ember" role="radio" aria-checked="false"><i class="swatch ember"></i>Ember Club</button>
+            <button data-outfit="moon" role="radio" aria-checked="false"><i class="swatch moon"></i>Moonlight</button>
+          </div>
+        </div>
+
+        <label class="range-setting">
+          <span>Motion energy <output id="motionOutput">85%</output></span>
+          <input id="motionRange" type="range" min="0" max="100" value="85" />
+        </label>
+
+        <label class="switch-row">
+          <span><strong>Open at login</strong><small>Quietly join when your Mac starts</small></span>
+          <input id="launchToggle" type="checkbox" role="switch" />
+        </label>
+
+        <button id="permissionsButton" class="secondary-button">Action permissions <span>›</span></button>
+        <button id="doneSettings" class="primary-button">Done</button>
+      </aside>
+
+      <aside id="permissionsPanel" class="panel permissions-panel" hidden aria-label="Action permissions">
+        <header>
+          <button id="backSettings" class="icon-button" aria-label="Back">‹</button>
+          <strong>Action permissions</strong>
+          <button class="icon-button panel-close" aria-label="Close">×</button>
+        </header>
+        <p class="permission-intro">Dude asks before every computer action. “Always allow” choices live here and can be revoked anytime.</p>
+        <div id="permissionList" class="permission-list"></div>
+        <button id="accessibilityButton" class="secondary-button">Open Accessibility permission</button>
+      </aside>
+
+      <dialog id="permissionDialog" class="permission-dialog">
+        <form method="dialog">
+          <div class="permission-icon">!</div>
+          <h2 id="permissionTitle">Allow this action?</h2>
+          <p id="permissionDescription"></p>
+          <code id="permissionValue"></code>
+          <div class="dialog-actions">
+            <button value="cancel" class="secondary-button">Cancel</button>
+            <button value="always" class="secondary-button">Always allow</button>
+            <button value="once" class="primary-button">Allow once</button>
+          </div>
+        </form>
+      </dialog>
+
+      <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+    </main>
+    <script src="renderer.js"></script>
+  </body>
+</html>

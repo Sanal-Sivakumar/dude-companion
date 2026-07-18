@@ -1,0 +1,48 @@
+{
+  "name": "dude-companion",
+  "version": "0.1.0",
+  "description": "An adorable, physics-driven, permission-gated macOS desktop companion.",
+  "main": "electron/main.js",
+  "author": "Dude Companion",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "test": "node --test tests/*.test.js",
+    "build:mac": "electron-builder --mac dmg zip --arm64 --x64",
+    "build:mac:local": "electron-builder --mac dmg --arm64",
+    "pack": "electron-builder --dir --mac --arm64"
+  },
+  "devDependencies": {
+    "electron": "^37.2.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.dudecompanion.app",
+    "productName": "Dude Companion",
+    "asar": true,
+    "compression": "maximum",
+    "electronLanguages": ["en-US"],
+    "files": [
+      "electron/**/*",
+      "src/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": ["dmg", "zip"],
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist"
+    },
+    "dmg": {
+      "title": "Dude Companion ${version}",
+      "artifactName": "Dude-Companion-${version}-${arch}.${ext}"
+    },
+    "artifactName": "Dude-Companion-${version}-${arch}.${ext}"
+  }
+}

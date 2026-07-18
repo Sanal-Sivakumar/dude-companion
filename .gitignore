@@ -1,0 +1,12 @@
+node_modules/
+release/
+dist/
+.DS_Store
+*.log
+.env
+.env.*
+work/*.png
+landing/.next/
+landing/.vinext/
+landing/.wrangler/
+landing/node_modules/
