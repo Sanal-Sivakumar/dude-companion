@@ -2,6 +2,8 @@
 
 Dude Companion is an original, physics-driven macOS desktop companion. Choose Dude, Dudette, or both; drag and throw them with momentum; chat through a compact right-click panel; set reminders; view lightweight system status; change outfits; and approve computer actions one at a time.
 
+Website: [dude-companion-mac.tinkerhub12.chatgpt.site](https://dude-companion-mac.tinkerhub12.chatgpt.site)
+
 ## Install
 
 Download the latest DMG from Releases, or use the one-command installer on the official landing page.
