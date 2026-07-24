@@ -31,9 +31,9 @@ export default function Home() {
 
       <section id="top" className="hero">
         <div className="hero-copy">
-          <p className="availability"><span /> macOS · Apple silicon preview</p>
+          <p className="availability"><span /> v0.2 · macOS · Apple silicon + Intel</p>
           <h1>A tiny roommate for your desktop.</h1>
-          <p className="lede">Throw them. Chat with them. Let them perch on the edge while you work. Dude and Dudette are adorable, physics-driven companions who help without becoming another notification machine.</p>
+          <p className="lede">Throw them. Chat with them. Place them on a real window edge—or watch them climb a wall and commute across the ceiling. Dude and Dudette are adorable, physics-driven companions who help without becoming another notification machine.</p>
           <div id="install" className="terminal" aria-label="Terminal installation command">
             <div className="terminal-bar"><span /><span /><span /><b>Terminal</b></div>
             <div className="command-row">
@@ -41,7 +41,7 @@ export default function Home() {
               <button onClick={copyCommand}>{copied ? "Copied" : "Copy"}</button>
             </div>
           </div>
-          <p className="install-note">One command. Drag to Applications automatically. No account required.</p>
+          <p className="install-note">One command. Detects your Mac, verifies the download, installs, and opens it. No account required.</p>
         </div>
 
         <div className="hero-stage" aria-label="Dude and Dudette characters">
@@ -58,12 +58,12 @@ export default function Home() {
       <section id="life" className="life">
         <div className="section-heading">
           <h2>Not a floating chatbot.<br />A little physical presence.</h2>
-          <p>The companion has weight, spring, impact, posture, and an oddly specific sense of dignity.</p>
+          <p>Fourteen articulated joints, continuous 3D turns, real support surfaces, hand-braced recovery, and 50 harmless ways to occupy themselves.</p>
         </div>
         <div className="feature-run">
           <article><span>01</span><h3>Swing and release</h3><p>Hold, build momentum, and let go. They arc, collide, tumble, recover—or decide the floor is fine.</p></article>
-          <article><span>02</span><h3>Quiet awareness</h3><p>CPU, memory, active time, and reminders are available without constant commentary.</p></article>
-          <article><span>03</span><h3>Actual personality</h3><p>They walk, sit, hang, leave the screen, return with props, and make short decisions from context.</p></article>
+          <article><span>02</span><h3>Whole-body motion</h3><p>Head, torso, shoulders, elbows, wrists, hips, knees, and ankles all react instead of sliding like a statue.</p></article>
+          <article><span>03</span><h3>More than patrol</h3><p>They sit cross-legged, use props, walk on windows, climb walls, crawl on the ceiling, and choose among 50 harmless routines.</p></article>
           <article><span>04</span><h3>Your version</h3><p>Choose Dude, Dudette, or both. Change colorways, motion energy, quiet mode, and startup behavior.</p></article>
         </div>
       </section>
@@ -71,12 +71,12 @@ export default function Home() {
       <section className="wardrobe">
         <div className="wardrobe-copy">
           <h2>Wardrobe changes.<br />Tiny privacy department.</h2>
-          <p>Outfits switch through a deliberately ridiculous, fully covered censor gag. Nothing explicit is ever rendered—just sheepish timing, a black rectangle, and excellent tailoring.</p>
-          <div className="outfit-tags"><span>Night Ops</span><span>Ember Club</span><span>Moonlight</span><span>More coming</span></div>
+          <p>Old 3D layers come off and new ones go on behind a deliberately oversized privacy blur. Nothing explicit is rendered—just a neutral mannequin surface, sheepish timing, and excellent tailoring.</p>
+          <div className="outfit-tags"><span>Night Ops</span><span>Ember Club</span><span>Moonlight</span><span>Moss Boss</span><span>Frost Byte</span><span>Rose Mischief</span></div>
         </div>
         <div className="censor-demo">
           <img src="/female.png" alt="Dudette in her Night Ops outfit" />
-          <div className="censor-card">MODESTY<br />PATCH</div>
+          <div className="censor-card">PRIVACY<br />BLUR</div>
           <p>“Couture has protocols.”</p>
         </div>
       </section>
@@ -99,7 +99,7 @@ export default function Home() {
         <button onClick={copyCommand}>{copied ? "Command copied" : "Copy install command"}</button>
       </section>
 
-      <footer><span>Dude Companion · macOS preview</span><span>Original characters · Permission-gated actions · Quiet by default</span></footer>
+      <footer><span>Dude Companion v0.2 · Apple silicon + Intel</span><span>Original characters · Permission-gated actions · Quiet by default</span></footer>
     </main>
   );
 }

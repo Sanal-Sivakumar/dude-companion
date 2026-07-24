@@ -33,8 +33,15 @@ test("server-renders the Dude Companion landing page", async () => {
   assert.match(html, /A tiny roommate for your desktop\./);
   assert.match(html, /curl -fsSL https:\/\/this-site\/install\.sh \| bash/);
   assert.match(html, /Swing and release/);
+  assert.match(html, /Fourteen articulated joints/);
+  assert.match(html, /continuous 3D turns/);
+  assert.match(html, /50 harmless/);
+  assert.match(html, /climb walls/);
+  assert.match(html, /sit cross-legged/);
+  assert.match(html, /Apple silicon \+ Intel/);
   assert.match(html, /Computer control without the mystery\./);
   assert.match(html, /Tiny privacy department\./);
+  assert.match(html, /PRIVACY/);
   assert.match(html, /src="\/male\.png"/);
   assert.match(html, /src="\/female\.png"/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
@@ -55,9 +62,12 @@ test("ships the production metadata, assets, and verified installer", async () =
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   assert.doesNotMatch(page + layout, /codex-preview|_sites-preview/);
 
-  assert.match(installer, /Sanal-Sivakumar\/dude-companion\/releases\/download\/v0\.1\.0/);
+  assert.match(installer, /Sanal-Sivakumar\/dude-companion\/releases\/download\/v0\.2\.0/);
+  assert.match(installer, /arm64\)/);
+  assert.match(installer, /x86_64\)/);
+  assert.match(installer, /Dude-Companion-0\.2\.0-\$\{BUILD_ARCH\}\.dmg/);
   assert.match(installer, /shasum -a 256/);
-  assert.match(installer, /EXPECTED_SHA="[a-f0-9]{64}"/);
+  assert.equal((installer.match(/EXPECTED_SHA="[a-f0-9]{64}"/g) ?? []).length, 2);
   assert.match(installer, /ditto .*Dude Companion\.app/);
   assert.doesNotMatch(installer, /sk_|gsk_|api[_-]?key/i);
 

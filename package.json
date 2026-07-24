@@ -1,6 +1,6 @@
 {
   "name": "dude-companion",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "An adorable, physics-driven, permission-gated macOS desktop companion.",
   "main": "electron/main.js",
   "author": "Dude Companion",
@@ -9,6 +9,8 @@
     "start": "electron .",
     "dev": "electron . --dev",
     "test": "node --test tests/*.test.js",
+    "test:runtime": "node scripts/verify-runtime.js",
+    "verify": "npm test && npm run test:runtime",
     "build:mac": "electron-builder --mac dmg zip --arm64 --x64",
     "build:mac:local": "electron-builder --mac dmg --arm64",
     "pack": "electron-builder --dir --mac --arm64"
@@ -22,7 +24,9 @@
     "productName": "Dude Companion",
     "asar": true,
     "compression": "maximum",
-    "electronLanguages": ["en-US"],
+    "electronLanguages": [
+      "en-US"
+    ],
     "files": [
       "electron/**/*",
       "src/**/*",
@@ -33,7 +37,10 @@
     },
     "mac": {
       "category": "public.app-category.productivity",
-      "target": ["dmg", "zip"],
+      "target": [
+        "dmg",
+        "zip"
+      ],
       "hardenedRuntime": true,
       "gatekeeperAssess": false,
       "entitlements": "build/entitlements.mac.plist",
@@ -44,5 +51,8 @@
       "artifactName": "Dude-Companion-${version}-${arch}.${ext}"
     },
     "artifactName": "Dude-Companion-${version}-${arch}.${ext}"
+  },
+  "dependencies": {
+    "three": "^0.160.1"
   }
 }

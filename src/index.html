@@ -14,25 +14,27 @@
         <button id="speechClose" aria-label="Dismiss">×</button>
       </div>
 
-      <section id="companion" class="companion" tabindex="0" aria-label="Desktop companion. Right click to chat, double click to personalize.">
-        <div class="tether" aria-hidden="true"></div>
-        <div class="shadow" aria-hidden="true"></div>
-        <div id="rig" class="rig male outfit-night">
-          <div class="part part-leg-left"><img class="skin" src="assets/male.png" alt="" draggable="false" /></div>
-          <div class="part part-leg-right"><img class="skin" src="assets/male.png" alt="" draggable="false" /></div>
-          <div class="part part-torso"><img class="skin" src="assets/male.png" alt="" draggable="false" /></div>
-          <div class="part part-arm-left"><img class="skin" src="assets/male.png" alt="" draggable="false" /></div>
-          <div class="part part-arm-right"><img class="skin" src="assets/male.png" alt="" draggable="false" /></div>
-          <div class="part part-head"><img class="skin" src="assets/male.png" alt="" draggable="false" /></div>
-          <img class="base-skin" src="assets/male-base.png" alt="" draggable="false" />
-          <img class="partner-skin" src="assets/female.png" alt="" draggable="false" />
-          <img class="partner-base-skin" src="assets/female-base.png" alt="" draggable="false" />
-          <div class="breath-glow" aria-hidden="true"></div>
-          <div id="prop" class="prop" aria-hidden="true"></div>
-          <div id="censor" class="censor" aria-hidden="true"><span>MODESTY<br>PATCH</span></div>
-        </div>
-        <div id="statusPill" class="status-pill">just vibing</div>
-      </section>
+      <template id="actorTemplate">
+        <section class="companion state-idle" tabindex="0" aria-label="Desktop companion. Right click to chat, double click to personalize.">
+          <div class="shadow" aria-hidden="true"></div>
+          <div class="rig male outfit-night">
+            <canvas class="character-canvas" width="360" height="540" aria-hidden="true"></canvas>
+            <div class="joint-anchors" aria-hidden="true" hidden>
+              <i data-joint="ankleL"></i><i data-joint="ankleR"></i>
+              <i data-joint="kneeL"></i><i data-joint="kneeR"></i>
+              <i data-joint="hipL"></i><i data-joint="hipR"></i>
+              <i data-joint="torso"></i>
+              <i data-joint="shoulderL"></i><i data-joint="shoulderR"></i>
+              <i data-joint="elbowL"></i><i data-joint="elbowR"></i>
+              <i data-joint="wristL"></i><i data-joint="wristR"></i>
+              <i data-joint="head"></i>
+            </div>
+            <div class="privacy-blur" aria-hidden="true"><span>PRIVACY<br>BLUR</span></div>
+            <div class="rig-debug" aria-hidden="true"></div>
+          </div>
+          <div class="status-pill">just vibing</div>
+        </section>
+      </template>
 
       <aside id="quickPanel" class="panel quick-panel" hidden aria-label="Companion menu">
         <header>
@@ -48,11 +50,19 @@
           <button data-move="jump">Jump</button>
           <button data-move="sit">Sit</button>
           <button data-move="hang">Hang</button>
+          <button data-move="perch">Perch</button>
+          <button data-move="ledge">Ledge walk</button>
+          <button data-move="climb">Climb</button>
+          <button data-move="ceiling">Ceiling crawl</button>
+          <button data-move="dance">Dance</button>
+          <button data-move="read">Read</button>
+          <button data-move="work">Work</button>
           <button id="wardrobeQuick">Outfit</button>
         </div>
         <div class="system-strip" aria-label="System status">
           <span><b id="cpuValue">—</b> CPU</span>
           <span><b id="memoryValue">—</b> memory</span>
+          <span><b id="gpuValue">—</b> GPU</span>
           <span><b id="screenValue">0m</b> active</span>
         </div>
         <button id="quietToggle" class="quiet-toggle" aria-pressed="false">Quiet mode <span>Off</span></button>
@@ -79,6 +89,9 @@
             <button data-outfit="night" role="radio" aria-checked="true"><i class="swatch night"></i>Night Ops</button>
             <button data-outfit="ember" role="radio" aria-checked="false"><i class="swatch ember"></i>Ember Club</button>
             <button data-outfit="moon" role="radio" aria-checked="false"><i class="swatch moon"></i>Moonlight</button>
+            <button data-outfit="forest" role="radio" aria-checked="false"><i class="swatch forest"></i>Moss Boss</button>
+            <button data-outfit="frost" role="radio" aria-checked="false"><i class="swatch frost"></i>Frost Byte</button>
+            <button data-outfit="rose" role="radio" aria-checked="false"><i class="swatch rose"></i>Rose Mischief</button>
           </div>
         </div>
 
@@ -123,6 +136,10 @@
 
       <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
     </main>
+    <script src="vendor/three.min.js"></script>
+    <script src="physics-engine.js"></script>
+    <script src="character-3d.js"></script>
+    <script src="autonomy-behaviors.js"></script>
     <script src="renderer.js"></script>
   </body>
 </html>

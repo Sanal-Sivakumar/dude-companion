@@ -21,4 +21,4 @@ The test command builds the production worker and verifies the rendered product 
 
 ## Distribution
 
-`public/install.sh` downloads the Apple-silicon DMG from the public GitHub release, validates its SHA-256 digest, installs the app in `/Applications`, and launches it.
+`public/install.sh` detects Apple silicon or Intel, downloads the matching v0.2 DMG from the public GitHub release, validates its architecture-specific SHA-256 digest, installs the app in `/Applications`, and launches it.
