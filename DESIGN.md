@@ -32,7 +32,13 @@ Use the macOS system family (`-apple-system`, `BlinkMacSystemFont`, `SF Pro Text
 
 ## Motion
 
-Use spring-damped movement with visible acceleration, landing compression, arm lag, and leg planting. Normal UI transitions run 150–220 ms. Reduced motion removes swing, idle hops, and walk bob while preserving clear state changes.
+Use a fixed 120 Hz articulated-body simulation with visible acceleration, landing compression, counter-rotating head/torso, shoulder and elbow lag, wrist follow-through, hip/knee gait, ankle compensation, and alternating planted feet. Each actor has 14 limited spring-damper joints. Root movement uses gravity, collision restitution, ground friction, angular inertia, and pointer-history release velocity.
+
+Walking faces travel at a readable three-quarter yaw. The renderer preserves the original high-detail painted character across front, side, rear, and seated anchors, then adds perspective compression and restrained articulated motion between them. Only one painted body is visible per frame, preventing doubled eyes, belts, or torso fragments. Internal shoulder and hip controls remain buried inside the hood, sleeves, torso, and continuous coat hem. Sitting, reading, working, and napping use coherent full-body cross-legged poses.
+
+Raised surfaces are real physics supports rather than visual offsets. With already-granted Accessibility access, the active window top becomes a bounded ledge; otherwise the work-area edge provides an honest dock fallback. Wall climbing and ceiling crawling have separate root constraints and alternating limb poses. Recovery plants the near hand, tucks the opposite knee, freezes angular spin, and presses upright.
+
+Normal UI transitions run 150–220 ms. Reduced motion caps throw speed, absorbs impacts, removes ambient glow, increases damping, and reduces autonomous movement while preserving clear state changes. Wardrobe motion removes and replaces painted garment regions behind a small, localized privacy blur; the underlying form remains neutral and anatomy-free.
 
 ## Layout
 

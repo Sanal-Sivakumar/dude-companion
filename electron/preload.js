@@ -8,6 +8,7 @@ contextBridge.exposeInMainWorld('dude', {
   saveSettings: (settings) => ipcRenderer.invoke('settings:save', settings),
   runAction: (action) => ipcRenderer.invoke('action:run', action),
   decide: (context) => ipcRenderer.invoke('ai:decide', context),
+  chat: (context) => ipcRenderer.invoke('ai:chat', context),
   accessibility: (prompt = false) => ipcRenderer.invoke('permissions:accessibility', prompt),
   notify: (payload) => ipcRenderer.invoke('notify', payload),
   setLaunchAtLogin: (enabled) => ipcRenderer.invoke('launch-at-login', Boolean(enabled)),
