@@ -2,7 +2,7 @@
 
 This checklist turns the comparison audit into shipped, testable behavior. The reference products reward visible variety, direct manipulation, surface-aware movement, props, customization, and restraint; Dude keeps those strengths while preserving explicit permission boundaries.
 
-1. Use one connected 3D body instead of sliced body images — implemented in `character-3d.js`.
+1. Preserve one connected high-detail silhouette instead of exposing sliced body images — implemented in `character-3d.js`.
 2. Keep internal hip pivots invisible — implemented and runtime-asserted.
 3. Overlap torso and pelvis with a continuous coat hem — implemented and runtime-asserted.
 4. Articulate all 14 named joints — implemented and unit/runtime-tested.
@@ -14,8 +14,8 @@ This checklist turns the comparison audit into shipped, testable behavior. The r
 10. Lift only the swing foot — implemented and unit-tested.
 11. Turn toward travel without moonwalking — implemented.
 12. Preserve a readable three-quarter angle while walking — implemented.
-13. Interpolate yaw continuously rather than snap among four sprites — implemented and runtime-tested.
-14. Render arbitrary front, side, rear, and in-between angles — implemented in Three.js.
+13. Animate yaw continuously while using one dominant painted silhouette per frame — implemented and runtime-tested.
+14. Render front, side, rear, and perspective-assisted in-between angles — implemented on the high-detail canvas.
 15. Use gravity and restitution for throws — implemented.
 16. Derive throw velocity from recent pointer history — implemented and unit-tested.
 17. Cap pathological throw speeds — implemented.
@@ -47,8 +47,8 @@ This checklist turns the comparison audit into shipped, testable behavior. The r
 43. Pause autonomy after user interaction — implemented.
 44. Nap instead of adding load when CPU usage is high — implemented.
 45. Keep speech rare, dismissible, and suppressible — implemented with Quiet mode.
-46. Use a large privacy blur during clothing changes — implemented and runtime-tested.
-47. Animate old garments out and new garments in — implemented as layered 3D pieces.
+46. Confine privacy blur to the relevant small body region during clothing changes — implemented and runtime-tested.
+47. Animate old garments out and new garments in — implemented as layered painted regions.
 48. Keep the privacy surface anatomy-free underneath — implemented with a neutral mannequin base.
 49. Gate typing, clicking, downloads, apps, links, and wallpaper changes behind explicit consent — implemented in the main process.
 50. Prove the result in the packaged runtime, not only in source tests — implemented through seven macOS Electron smoke scenes and retained screenshots/diagnostics.

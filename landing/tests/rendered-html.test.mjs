@@ -34,7 +34,7 @@ test("server-renders the Dude Companion landing page", async () => {
   assert.match(html, /curl -fsSL https:\/\/this-site\/install\.sh \| bash/);
   assert.match(html, /Swing and release/);
   assert.match(html, /Fourteen articulated joints/);
-  assert.match(html, /continuous 3D turns/);
+  assert.match(html, /high-detail multi-view turns/);
   assert.match(html, /50 harmless/);
   assert.match(html, /climb walls/);
   assert.match(html, /sit cross-legged/);

@@ -37,6 +37,7 @@
     },
     "mac": {
       "category": "public.app-category.productivity",
+      "identity": "-",
       "target": [
         "dmg",
         "zip"
@@ -51,8 +52,5 @@
       "artifactName": "Dude-Companion-${version}-${arch}.${ext}"
     },
     "artifactName": "Dude-Companion-${version}-${arch}.${ext}"
-  },
-  "dependencies": {
-    "three": "^0.160.1"
   }
 }

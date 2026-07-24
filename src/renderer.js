@@ -810,7 +810,7 @@ function renderActor(controller) {
     wardrobe: controller.wardrobe,
     selected: controller.id === activeActorId
   });
-  controller.element.dataset.renderMode = 'continuous-3d';
+  controller.element.dataset.renderMode = 'high-detail-360';
   controller.element.dataset.yaw = String(pose.visual.yaw);
   controller.element.dataset.jointCount = String(Object.keys(pose.joints).length);
   controller.element.dataset.movingJoints = String(Object.values(pose.joints).filter((degrees) => Math.abs(degrees) > 0.05).length);
@@ -820,6 +820,10 @@ function renderActor(controller) {
   const renderInspection = controller.character3d.inspect();
   controller.element.dataset.coatHemVisible = String(Boolean(renderInspection?.coatHemVisible));
   controller.element.dataset.hipPivotsVisible = String(Boolean(renderInspection?.hipPivotsVisible));
+  controller.element.dataset.highDetail = String(Boolean(renderInspection?.highDetail));
+  controller.element.dataset.viewFrom = renderInspection?.viewFrom || '';
+  controller.element.dataset.viewTo = renderInspection?.viewTo || '';
+  controller.element.dataset.viewMix = String(renderInspection?.viewMix ?? 0);
   controller.element.dataset.supportKind = controller.model.support.active ? controller.model.support.kind : '';
   controller.element.dataset.supportY = controller.model.support.active ? String(controller.model.support.y) : '';
   controller.element.dataset.bodyAngle = String(pose.angle);

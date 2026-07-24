@@ -7,7 +7,7 @@ Version 0.2 replaces the original CSS puppet with a deterministic articulated-bo
 - 14 constrained joints per character: head, torso, shoulders, elbows, wrists/hands, hips, knees, and ankles/feet.
 - A fixed 120 Hz physics step with gravity, friction, restitution, angular inertia, joint limits, spring damping, ground/edge impacts, and pointer-history throw velocity.
 - Alternating planted and swing feet, direction-aware body yaw, impact transfer through the whole rig, landing compression, tumbling, lying down, and physical recovery.
-- A joined, procedural Three.js character with continuous 360° yaw, connected coat volume, buried rig pivots, authored cross-legged sitting, and arbitrary in-between viewing angles.
+- High-detail original character artwork with front, side, rear, and seated views, perspective-assisted turning, a connected coat silhouette, buried rig pivots, and an authored cross-legged sit.
 - Independent bodies when both companions are enabled.
 - Raised support physics for active-window tops and the dock, plus distinct wall-climbing, ceiling-crawling, hanging, and ledge-walking motion.
 - Exactly 50 harmless local behavior variations spanning locomotion, rest, partner routines, props, and recovery drills. Computer actions never run autonomously.
@@ -64,7 +64,7 @@ npm run test:runtime # seven macOS Electron scenes: walk, impact, wardrobe, sit,
 npm run verify       # both suites
 ```
 
-The v0.2 release matrix covers 18 source/simulation checks plus seven real Electron scenes. It verifies all 14 joints, the 50-behavior catalog, independent actors, frame-rate consistency, planted feet, continuous yaw, cross-legged sitting, hand-braced recovery without spin, raised supports, wall/ceiling motion, hip-pivot occlusion, full-body wardrobe blur, CSP, and transparent-window rendering. See [QUALITY_AUDIT.md](QUALITY_AUDIT.md).
+The v0.2 release matrix covers 19 source/simulation checks plus seven real Electron scenes. It verifies all 14 joints, the 50-behavior catalog, independent actors, frame-rate consistency, planted feet, directional turning, cross-legged sitting, hand-braced recovery without spin, raised supports, wall/ceiling motion, hip-pivot occlusion, localized wardrobe blur, CSP, and transparent-window rendering. See [QUALITY_AUDIT.md](QUALITY_AUDIT.md).
 
 ## Current release boundary
 

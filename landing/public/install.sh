@@ -6,12 +6,12 @@ case "$ARCH" in
   arm64)
     BUILD_ARCH="arm64"
     MAC_LABEL="Apple silicon"
-    EXPECTED_SHA="246c4b2a790472717b03d608bb9c43236ed306420b0a8d79e581f7a985025818"
+    EXPECTED_SHA="633b1f18dd3ab5213985601336882cb82d16d3755f4717e823373ed02d03bde8"
     ;;
   x86_64)
     BUILD_ARCH="x64"
     MAC_LABEL="Intel"
-    EXPECTED_SHA="0bf759b275544c4fcde13823b5538e33c3b06ae38c58425e0955c31aee968f1a"
+    EXPECTED_SHA="3ec1cf9a1fbd4bfc8b07bea74e9b9361b3855f7acf8efc05399f3f211a97ceb2"
     ;;
   *)
     echo "Dude Companion supports Apple silicon (arm64) and Intel (x86_64) Macs. This Mac reports: $ARCH" >&2

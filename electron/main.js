@@ -132,6 +132,10 @@ async function runSmokeCapture() {
         wardrobeTo: actor.dataset.wardrobeTo,
         coatHemVisible: actor.dataset.coatHemVisible === 'true',
         hipPivotsVisible: actor.dataset.hipPivotsVisible === 'true',
+        highDetail: actor.dataset.highDetail === 'true',
+        viewFrom: actor.dataset.viewFrom,
+        viewTo: actor.dataset.viewTo,
+        viewMix: Number(actor.dataset.viewMix),
         supportKind: actor.dataset.supportKind,
         supportY: Number(actor.dataset.supportY),
         bodyAngle: Number(actor.dataset.bodyAngle),
@@ -139,7 +143,7 @@ async function runSmokeCapture() {
         joints: Number(actor.dataset.jointCount),
         canvas: { width: actor.querySelector('canvas')?.width, height: actor.querySelector('canvas')?.height },
         privacyBlur: (() => {
-          const blur = actor.querySelector('.privacy-blur');
+          const blur = [...actor.querySelectorAll('.privacy-zone')].find((node) => getComputedStyle(node).display !== 'none');
           const style = blur ? getComputedStyle(blur) : null;
           return style ? { display: style.display, opacity: Number(style.opacity), width: blur.offsetWidth, height: blur.offsetHeight, backdropFilter: style.backdropFilter || style.webkitBackdropFilter } : null;
         })()

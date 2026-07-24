@@ -58,7 +58,7 @@ export default function Home() {
       <section id="life" className="life">
         <div className="section-heading">
           <h2>Not a floating chatbot.<br />A little physical presence.</h2>
-          <p>Fourteen articulated joints, continuous 3D turns, real support surfaces, hand-braced recovery, and 50 harmless ways to occupy themselves.</p>
+          <p>Fourteen articulated joints, high-detail multi-view turns, real support surfaces, hand-braced recovery, and 50 harmless ways to occupy themselves.</p>
         </div>
         <div className="feature-run">
           <article><span>01</span><h3>Swing and release</h3><p>Hold, build momentum, and let go. They arc, collide, tumble, recover—or decide the floor is fine.</p></article>
@@ -71,7 +71,7 @@ export default function Home() {
       <section className="wardrobe">
         <div className="wardrobe-copy">
           <h2>Wardrobe changes.<br />Tiny privacy department.</h2>
-          <p>Old 3D layers come off and new ones go on behind a deliberately oversized privacy blur. Nothing explicit is rendered—just a neutral mannequin surface, sheepish timing, and excellent tailoring.</p>
+          <p>Old garment layers move out and new ones move in behind a small blur confined to the relevant area. Nothing explicit is rendered—just sheepish timing and excellent tailoring.</p>
           <div className="outfit-tags"><span>Night Ops</span><span>Ember Club</span><span>Moonlight</span><span>Moss Boss</span><span>Frost Byte</span><span>Rose Mischief</span></div>
         </div>
         <div className="censor-demo">

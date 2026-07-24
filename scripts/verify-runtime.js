@@ -48,7 +48,8 @@ for (const scene of scenes) {
     assert.equal(diagnostics.actorCount, 2);
     assert.deepEqual(diagnostics.actors.map((actor) => actor.state), ['state-walk', 'state-walk']);
     assert.ok(diagnostics.actors.every((actor) => actor.movingJoints === 14), 'walking did not articulate every joint');
-    assert.ok(diagnostics.actors.every((actor) => actor.renderMode === 'continuous-3d'));
+    assert.ok(diagnostics.actors.every((actor) => actor.renderMode === 'high-detail-360'));
+    assert.ok(diagnostics.actors.every((actor) => actor.highDetail), 'high-detail artwork renderer is not active');
     assert.ok(diagnostics.actors.every((actor) => actor.joints === 14));
     assert.ok(diagnostics.actors.every((actor) => actor.canvas.width === 360 && actor.canvas.height === 540));
     assert.ok(diagnostics.actors.every((actor) => actor.coatHemVisible), 'coat hem is missing during gait');
@@ -63,9 +64,10 @@ for (const scene of scenes) {
     assert.equal(diagnostics.actorCount, 2);
     assert.ok(diagnostics.actors.every((actor) => actor.censorVisible));
     assert.ok(diagnostics.actors.every((actor) => actor.wardrobeFrom === 'night' && actor.wardrobeTo === 'rose'));
-    assert.ok(diagnostics.actors.every((actor) => actor.privacyBlur.display === 'grid'));
+    assert.ok(diagnostics.actors.every((actor) => actor.privacyBlur.display === 'block'));
     assert.ok(diagnostics.actors.every((actor) => actor.privacyBlur.opacity > 0.5));
-    assert.ok(diagnostics.actors.every((actor) => actor.privacyBlur.width > 110 && actor.privacyBlur.height > 130));
+    assert.ok(diagnostics.actors.every((actor) => actor.privacyBlur.width >= 40 && actor.privacyBlur.width <= 56));
+    assert.ok(diagnostics.actors.every((actor) => actor.privacyBlur.height >= 36 && actor.privacyBlur.height <= 42));
     assert.ok(diagnostics.actors.every((actor) => /blur\(18px\)/.test(actor.privacyBlur.backdropFilter)));
   } else if (scene.name === 'sit') {
     assert.equal(diagnostics.actorCount, 1);
@@ -87,6 +89,8 @@ for (const scene of scenes) {
     assert.equal(diagnostics.actors[0].state, 'state-look');
     const snappedDistance = Math.abs(diagnostics.actors[0].yaw % 90);
     assert.ok(snappedDistance > 4 && snappedDistance < 86, `yaw ${diagnostics.actors[0].yaw} looks direction-snapped`);
+    assert.notEqual(diagnostics.actors[0].viewFrom, diagnostics.actors[0].viewTo);
+    assert.ok(diagnostics.actors[0].viewMix > 0.02 && diagnostics.actors[0].viewMix < 0.98, 'turn did not blend between detailed view anchors');
   }
   console.log(`✓ ${scene.name}: ${diagnostics.actorCount} actor(s), ${diagnostics.actors.map((actor) => `${actor.movingJoints}/14`).join(' + ')} moving joints`);
 }

@@ -17,9 +17,10 @@ test('desktop overlay contains both character assets and safety UI', () => {
   assert.match(html, /assets\/male\.png/);
   assert.match(html, /assets\/female\.png/);
   assert.match(html, /permissionDialog/);
-  assert.match(html, /privacy-blur/);
+  assert.match(html, /privacy-zones/);
+  assert.match(html, /zone-groin/);
+  assert.match(html, /zone-rear/);
   assert.match(html, /character-canvas/);
-  assert.match(html, /vendor\/three\.min\.js/);
   assert.match(html, /character-3d\.js/);
   assert.match(html, /autonomy-behaviors\.js/);
   assert.doesNotMatch(html, /class="tether"/);
@@ -52,10 +53,22 @@ test('autonomy catalog contains fifty distinct harmless physical behaviors', () 
   assert.ok(BEHAVIORS.every((behavior) => !forbidden.test(behavior.action)));
 });
 
-test('three-dimensional coat occludes internal hip pivots during gait', () => {
+test('high-detail articulated coat occludes internal hip pivots during gait', () => {
   const source = fs.readFileSync(path.join(root, 'src/character-3d.js'), 'utf8');
-  assert.match(source, /clothes-coat-hem/);
-  assert.match(source, /this\.base\.hipL\.visible = false/);
-  assert.match(source, /this\.clothes\[name\]\.visible = false/);
-  assert.match(source, /this\.root\.rotation\.y = yaw/);
+  assert.match(source, /waistGuard/);
+  assert.match(source, /hipPivotsVisible: false/);
+  assert.match(source, /highDetail: true/);
+  assert.match(source, /viewBlend/);
+});
+
+test('view selection keeps one detailed silhouette while preserving turn perspective', () => {
+  const { viewBlend } = require('../src/character-3d.js');
+  const turn = viewBlend(37);
+  assert.equal(turn.from, 'front');
+  assert.equal(turn.to, 'side-right');
+  assert.ok(turn.mix > 0.2 && turn.mix < 0.8);
+  assert.equal(turn.dominant, 'front');
+  assert.ok(turn.perspectiveScale < 1 && turn.perspectiveScale > 0.89);
+  assert.equal(viewBlend(179).to, 'back');
+  assert.equal(viewBlend(-179).from, 'back');
 });
